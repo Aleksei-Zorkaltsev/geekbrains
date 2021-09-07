@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,21 +22,26 @@ use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 
 //auth
 
 Route::get('/auth', [AuthController::class, 'index'])
-    ->name('news');
+    ->name('auth');
+
 
 
 //group Admin
+
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
-    Route::resource('categories', AdminCategoryController::class);
-    Route::resource('news', AdminNewsController::class);
-    Route::get('/addNews', [AdminNewsController::class, 'addNews']);
+    Route::resource('categories', AdminCategoryController::class)->name('index', 'categories');
+    Route::resource('news', AdminNewsController::class)->name('index', 'news');
+    Route::get('/', [AdminController::class, 'index'])->name('main');
+    Route::get('/addNews', [AdminNewsController::class, 'addNews'])
+        ->name('addNews');
 });
+
 
 // news
 Route::get('/news', [NewsController::class, 'index'])
@@ -43,6 +50,8 @@ Route::get('/news', [NewsController::class, 'index'])
 Route::get('/news/{id}', [NewsController::class, 'show'])
     ->where('id', '\d+')
     ->name('news.show');
+
+
 
 // news category
 

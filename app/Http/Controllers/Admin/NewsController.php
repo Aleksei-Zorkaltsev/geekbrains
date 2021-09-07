@@ -10,11 +10,11 @@ class NewsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        return view('admin.index', [
+        return view('admin.news', [
             'newsList' => $this->getNews()
         ]);
     }
@@ -34,7 +34,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return ' create news ';
+        // return view('admin.addNews');
     }
 
     /**

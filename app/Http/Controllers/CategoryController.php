@@ -14,12 +14,4 @@ class CategoryController extends Controller
     {
         return view('news.category', ['newsList' => $this->getNews(), 'category' => $categoryName]);
     }
-
-    protected function getCategories()
-    {
-        return [
-            ['id' => 1, 'name' => 'politics'],
-            ['id' => 2, 'name' => 'sports']
-        ];
-    }
 }

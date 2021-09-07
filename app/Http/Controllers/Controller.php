@@ -32,4 +32,14 @@ class Controller extends BaseController
         return $data;
     }
 
+    protected function getCategories()
+    {
+        return [
+            ['id' => 1, 'name' => 'politics'],
+            ['id' => 2, 'name' => 'sports'],
+            ['id' => 3, 'name' => 'games'],
+            ['id' => 4, 'name' => 'cinema']
+        ];
+    }
+
 }
