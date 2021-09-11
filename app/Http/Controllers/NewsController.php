@@ -20,10 +20,4 @@ class NewsController extends Controller
         ]);
     }
 
-    public function add(int $id)
-    {
-        return view('news.show', [
-            'id' => $id
-        ]);
-    }
 }

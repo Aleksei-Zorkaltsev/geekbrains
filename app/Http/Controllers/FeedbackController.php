@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class FeedbackController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        return view('admin.categories.index', ['categories' => $this->getCategories()]);
+        return view('feedback.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return  "add Category";
+        return view('feedback.create');
     }
 
     /**
@@ -35,7 +35,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $content = $request->all();
+        $response = response($content);
+
+        return view('feedback.create', ['response' => $response->original]);
     }
 
     /**
@@ -82,4 +85,7 @@ class CategoryController extends Controller
     {
         //
     }
+
+
+
 }

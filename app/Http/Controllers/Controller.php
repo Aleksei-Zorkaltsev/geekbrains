@@ -32,7 +32,7 @@ class Controller extends BaseController
         return $data;
     }
 
-    protected function getCategories()
+    public function getCategories()
     {
         return [
             ['id' => 1, 'name' => 'politics'],

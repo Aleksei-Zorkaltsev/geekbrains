@@ -5,6 +5,8 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\Admin\FeedbackController as AdminFeedbackController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 
@@ -35,11 +37,14 @@ Route::get('/auth', [AuthController::class, 'index'])
 //group Admin
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
-    Route::resource('categories', AdminCategoryController::class)->name('index', 'categories');
-    Route::resource('news', AdminNewsController::class)->name('index', 'news');
+    Route::resource('categories', AdminCategoryController::class)
+        ->name('index', 'categories');
+    Route::resource('news', AdminNewsController::class)
+        ->name('index', 'news');
+    Route::resource('feedback', AdminFeedbackController::class)
+        ->name('index', 'feedback');
+
     Route::get('/', [AdminController::class, 'index'])->name('main');
-    Route::get('/addNews', [AdminNewsController::class, 'addNews'])
-        ->name('addNews');
 });
 
 
@@ -53,9 +58,17 @@ Route::get('/news/{id}', [NewsController::class, 'show'])
 
 
 
+//feedback
+
+//Route::get('/feedback', [FeedbackController::class, 'index'])
+//    ->name('feedback');
+Route::resource('feedback', FeedbackController::class)
+    ->name('index', 'feedback');
+
+
 // news category
 
-Route::get('/category', [CategoryController::class, 'index'])
+Route::get('/categories', [CategoryController::class, 'index'])
     ->name('categories');
 
 Route::get('/category/{name}', [CategoryController::class, 'show'])

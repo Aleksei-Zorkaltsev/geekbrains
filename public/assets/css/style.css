@@ -313,3 +313,31 @@ footer {
     padding: 10px;
     margin-top: 10px;
 }
+.addFeedBackForm{
+    box-sizing: border-box;
+    background-color: white;
+    color: black;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: rgba(51, 51, 51, 0.219) 0 0 6px 0;
+}
+.addFeedBackForm input{
+    height: 30px;
+    width: calc(100% - 10px);
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #0000004f;
+    outline: blueviolet;
+}
+.addFeedBackForm button {
+    background-color: rgb(170, 22, 59);
+    color: white;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
