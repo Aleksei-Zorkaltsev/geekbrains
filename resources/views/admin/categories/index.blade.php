@@ -1,22 +1,22 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="admin_category_panel">
-        <div class="header_admin_categorypanel">
+        <div class="adminWorkspace_title">
             <h2>admin category panel</h2>
             <a href=" {{ route('admin.categories.create') }}">Add category <i class="fas fa-plus"></i></a>
         </div>
 
-        <table class="admin_categorytable" cellspacing="0">
+        <table class="admin_table" cellspacing="0">
             <tr>
                 <th>name</th>
+                <th>description</th>
                 <th>control</th>
             </tr>
             @foreach ($categories as $category)
                 <tr>
-                    <td>{{$category['name']}}</td>
+                    <td>{{ $category->title }}</td>
+                    <td>{{ $category->description }}</td>
                     <td><a href="#"><i class="fas fa-cog"></i></a> | <a href="#"><i class="fas fa-trash-alt"></i></a></td>
                 </tr>
             @endforeach
         </table>
-    </div>
 @endsection

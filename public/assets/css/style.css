@@ -63,6 +63,42 @@ footer {
     background-color: rgb(170, 22, 59);
 }
 
+.side_block {
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(51, 51, 51, 0.219) 0 0 6px 0;
+    margin-bottom: 10px;
+}
+
+.side_block h3 {
+    margin: 0;
+    padding: 10px;
+    background-color: rgb(199, 199, 199);
+    text-align: center;
+    margin-bottom: 10px;
+    text-shadow: rgba(100, 100, 100, 0.445) 1px 0 0;
+}
+
+.side_block a {
+    text-decoration: none;
+    color: rgb(170, 22, 59);
+}
+
+.side_block a:hover {
+    text-decoration-line: underline;
+    color: rgb(170, 22, 59);
+}
+
+.side_block ul {
+    padding: 20px;
+}
+
+.side_block ul li {
+    margin-bottom: 5px;
+    list-style-type: none;
+}
+
 .header_right {
     display: flex;
     align-self: center;
@@ -140,6 +176,9 @@ footer {
     grid-gap: 20px;
 }
 
+
+/* News miniature */
+
 .news_mini {
     overflow: hidden;
     color: rgb(29, 29, 29);
@@ -207,6 +246,7 @@ footer {
     background: linear-gradient(0deg, rgba(255, 255, 250, 1) 20%, rgba(255, 255, 255, 0) 100%);
 }
 
+/*
 .news {
     margin: 10px;
     padding: 5px 10px;
@@ -224,6 +264,20 @@ footer {
     padding-bottom: 5px;
     border-bottom: 1px solid rgba(170, 22, 59, 0.623);
 }
+*/
+
+
+
+/* One News */
+.one_news{
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: rgba(51, 51, 51, 0.219) 0 0 6px 0;
+}
+
+
+/*  Authentication  .  Registration  */
 
 .auth_reg {
     width: 210px;
@@ -252,67 +306,6 @@ footer {
     margin-top: 10px;
 }
 
-.side_block {
-    overflow: hidden;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: rgba(51, 51, 51, 0.219) 0 0 6px 0;
-    margin-bottom: 10px;
-}
-
-.side_block h3 {
-    margin: 0;
-    padding: 10px;
-    background-color: rgb(199, 199, 199);
-    text-align: center;
-    margin-bottom: 10px;
-    text-shadow: rgba(100, 100, 100, 0.445) 1px 0 0;
-}
-
-.side_block a {
-    text-decoration: none;
-    color: rgb(170, 22, 59);
-}
-
-.side_block a:hover {
-    text-decoration-line: underline;
-    color: rgb(170, 22, 59);
-}
-
-.side_block ul {
-    padding: 20px;
-}
-
-.side_block ul li {
-    margin-bottom: 5px;
-    list-style-type: none;
-}
-
-.addNewsForm {
-    width: 600px;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: rgba(51, 51, 51, 0.219) 0 0 6px 0;
-}
-
-.addNewsForm textarea {
-    width: 594px;
-    resize: none;
-    min-height: 400px;
-    outline: none;
-}
-
-.addNewsForm button {
-    background-color: rgb(170, 22, 59);
-    color: white;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 10px;
-}
 .addFeedBackForm{
     box-sizing: border-box;
     background-color: white;
@@ -332,6 +325,7 @@ footer {
     border: 1px solid #0000004f;
     outline: blueviolet;
 }
+
 .addFeedBackForm button {
     background-color: rgb(170, 22, 59);
     color: white;
