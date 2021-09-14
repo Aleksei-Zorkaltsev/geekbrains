@@ -14,17 +14,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('admin.news', [
+        return view('admin.news.index', [
             'newsList' => $this->getNews()
         ]);
-    }
-
-    /**
-     *
-     */
-    public function addNews()
-    {
-        return view('admin.addNews');
     }
 
     /**
@@ -34,7 +26,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        // return view('admin.addNews');
+        return view('admin.news.create');
     }
 
     /**
@@ -45,7 +37,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'News add / store request';
     }
 
     /**
@@ -56,7 +48,7 @@ class NewsController extends Controller
      */
     public function show($id)
     {
-        return view('admin.show', [
+        return view('admin.news.show', [
         'id' => $id
     ]);
     }

@@ -31,10 +31,11 @@
 <main>
     <div class="admin_panel">
         <div class="admin_sidebar">
-            <h2>ADMINISTRATE PANEL</h2>
+            <a href="{{route('admin.main')}}"><h2>ADMINISTRATE PANEL</h2></a>
             <ul>
-                <li><a href="{{ route('admin.news') }}">News</a></li>
-                <li><a href="{{ route('admin.categories') }}">Categories</a></li>
+                <li @if(request()->routeIs('admin.news*')) class="active" @endif><a href="{{ route('admin.news') }}">News</a></li>
+                <li @if(request()->routeIs('admin.categories*')) class="active" @endif><a href="{{ route('admin.categories') }}">Categories</a></li>
+                <li @if(request()->routeIs('admin.feedback*')) class="active" @endif><a href="{{ route('admin.feedback') }}">Feedback</a></li>
             </ul>
         </div>
 

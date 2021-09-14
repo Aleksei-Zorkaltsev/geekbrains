@@ -3,7 +3,7 @@
     <div class="admin_news_panel">
         <div class="header_adminnewspanel">
             <h2>admin news panel</h2>
-            <a href="{{ route('admin.addNews') }}">Add news <i class="fas fa-plus"></i></a>
+            <a href="{{ route('admin.news.create') }}">Add news <i class="fas fa-plus"></i></a>
         </div>
 
         <table class="admin_newstable" cellspacing="0">

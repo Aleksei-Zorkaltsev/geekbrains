@@ -32,6 +32,7 @@
                 <ul>
                     <li><a href="{{ route('news') }}">News</a></li>
                     <li><a href="{{ route('categories') }}">Category</a></li>
+                    <li><a href="{{ route('feedback') }}">Feedback</a></li>
                     <li><a href="{{ route('admin.main') }}">Admin panel</a></li>
                 </ul>
             </div>
