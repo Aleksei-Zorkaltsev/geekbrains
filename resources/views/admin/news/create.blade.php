@@ -1,21 +1,22 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="admin_addNews">
-        <h2>Add news</h2>
-        <form action="{{ route('admin.news.store') }}" method="POST">
+    <div class="admin_create_edit_form">
+        <form method="post" action="{{ route('admin.news.store') }}">
             @csrf
-            <div class="row">
-                <span> author:</span><input name="author" type="text">
-            </div>
-            <div class="row">
-                <span> title :</span><input name="title" type="text">
-            </div>
-            <div class="row">
-                <span> description: </span> <input name="description" type="text">
-            </div>
-            <div class="row">
-                <button type="submit"> Add </button>
-            </div>
+            <h3>Добавить новость</h3>
+            <p>Выберите категорию:</p>
+            <select name="category_id" id="">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                @endforeach
+            </select>
+            <p>Заголовок:</p>
+            <input type="text" name="title" value="{{ old('title') }}">
+            <p>Автор:</p>
+            <input type="text" name="author" value="{{ old('author') }}">
+            <p>Контент:</p>
+            <textarea name="description" value="{{ old('description') }}"></textarea>
+            <button type="submit">Create</button>
         </form>
     </div>
 @endsection

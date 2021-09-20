@@ -9,8 +9,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $model = new News();
-        $newsList = $model->getNews();
+        $newsList = News::get();
 
         return view('news.index', [
             'newsList' => $newsList
@@ -19,9 +18,7 @@ class NewsController extends Controller
 
     public function show(int $id)
     {
-
-        $model = new News();
-        $news = $model->getOneNews($id);
+        $news = News::find($id);
 
         return view('news.show', [
             'id' => $id,

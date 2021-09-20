@@ -11,12 +11,11 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $model = new Category();
-        $categories = $model->getCategories();
+        $categories = Category::get();
         return view('admin.categories.index', ['categories' => $categories]);
     }
 
@@ -27,18 +26,25 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return  "add Category";
+        return  view('admin.categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return
+     * \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $category = Category::create($request->only('title', 'description'));
+
+        if($category){
+            return redirect()->route('admin.categories')->with('success', 'add category success');
+        }
+
+        return back()->with('error', 'add category fail')->withInput();
     }
 
     /**
@@ -55,12 +61,15 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  $category
+     * @return
+     * \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -68,20 +77,34 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return
+     * \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        //$category->title = $request->input('title')
+        $category->fill(
+            $request->only('title', 'description')
+        )->save();
+
+        if($category){
+            return redirect()
+                ->route('admin.categories')
+                ->with('success', 'update category success');
+        }
+        return back()
+            ->with('error', 'update category fail')
+            ->withInput();
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return
+     * \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
     }

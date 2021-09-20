@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+        <h2>не реализованно</h2>
     <div class="auth_reg">
         <form action="#">
             <p><b>Авторизация</b></p>

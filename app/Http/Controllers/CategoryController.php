@@ -9,16 +9,19 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(){
-        $model = new Category();
-        $categories = $model->getCategories();
-        return view('news.categories', ['categories' => $categories]);
+
+        $categories = Category::get();
+        return view('categories.index', ['categories' => $categories]);
     }
 
-    public function show($name)
+    public function show($id)
     {
-        $newsModel = new News();
-        $newsList = $newsModel->getNews_CategoryName($name);
+        $category = Category::find($id);
+        $newsList = News::where('category_id', $id)->get();
 
-        return view('news.category', ['newsList' => $newsList, 'category' => $name]);
+        return view('categories.show', [
+            'category' => $category,
+            'newsList' => $newsList
+            ]);
     }
 }

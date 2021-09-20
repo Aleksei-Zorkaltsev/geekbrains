@@ -12,11 +12,12 @@ class Category extends Model
 
     protected $table = 'categories';
 
-    public function getCategories(){
-        return DB::table($this->table)->get();
-    }
+    protected $fillable = ['title', 'description'];
 
-    public function getCategoryId($id){
-        return DB::table($this->table)->find($id);
+
+
+    public function news()
+    {
+        return $this->hasMany(News::class, 'category_id', 'id');
     }
 }
