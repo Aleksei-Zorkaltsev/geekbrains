@@ -12,20 +12,17 @@ class News extends Model
 
     protected $table = 'news';
 
-    public function getNews(){
-        return DB::table($this->table)->get();
-    }
+//    protected $fillable = [
+//        'title', 'author', 'description'
+//    ];
 
-    public function getOneNews($id){
-        return DB::table($this->table)->find($id);
-    }
+    protected $guarded = [
+        'id'
+    ];
 
-    public function getNews_CategoryName($name)
+
+    public function category()
     {
-        return DB::table($this->table)
-            ->join('categories', 'categories.id', '=', "{$this->table}.category_id")
-            ->select("{$this->table}.*", 'categories.title as categoryTitle')
-            ->where('categories.title', '=', $name)
-            ->get();
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 }

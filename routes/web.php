@@ -58,7 +58,7 @@ Route::get('/news/{id}', [NewsController::class, 'show'])
 
 
 
-//feedback
+// feedback
 
 //Route::get('/feedback', [FeedbackController::class, 'index'])
 //    ->name('feedback');
@@ -66,11 +66,11 @@ Route::resource('feedback', FeedbackController::class)
     ->name('index', 'feedback');
 
 
-// news category
+// category
 
 Route::get('/categories', [CategoryController::class, 'index'])
     ->name('categories');
 
-Route::get('/category/{name}', [CategoryController::class, 'show'])
+Route::get('/category/{id}', [CategoryController::class, 'show'])
     ->name('category.show');
 

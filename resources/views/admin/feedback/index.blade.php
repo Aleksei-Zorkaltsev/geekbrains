@@ -1,4 +1,4 @@
 @extends('layouts.admin')
 @section('content')
-    <h2>empty now</h2>
+    <h2>не реализованно</h2>
 @endsection
