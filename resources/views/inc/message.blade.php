@@ -9,3 +9,11 @@
         {{ session()->get('error') }}
     </div>
 @endif
+
+@if($errors->any())
+    @foreach($errors->all() as $error)
+        <div class="status_operation_message red">
+            {{ $error }}
+        </div>
+    @endforeach
+@endif

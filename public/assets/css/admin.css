@@ -155,6 +155,8 @@ h2{
     text-decoration: none;
     background-color: rgb(27, 129, 167);
 }
+
+/* table */
 .admin_table {
     border-radius: 10px;
     width: calc(100% - 20px);
@@ -221,7 +223,6 @@ h2{
     padding-left: 10px;
     display: block;
     width: 100%;
-    /*width: calc(100% - 10px);*/
 }
 .admin_create_edit_form textarea{
     border: 1px solid rgba(81, 98, 156, 0.53);
@@ -251,15 +252,71 @@ h2{
     background-color: #1a202c;
 }
 
-.green{
-    background-color: #ceffb8;
-    border: 1px solid green;
-    border-radius: 10px;
+/* paginator */
+
+.admin_newsPaginator{
+    margin: 0 10px;
+    display: flex;
+    font-size: 20px;
+}
+.admin_newsPaginator a{
+    display: block;
+    background-color: white;
+    color: #151515;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    border: 1px solid #5e5e5e;
 
 }
+.admin_newsPaginator span{
+    display: block;
+    background-color: white;
+    color: #151515;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    border: 1px solid #5e5e5e;
+}
+.admin_newsPaginator span:hover{
+    background-color: #dbdbdb;
+}
+.admin_newsPaginator a:hover{
+    background-color: #dbdbdb;
+}
+.admin_paginator_currentPage{
+    background-color: rgb(27, 129, 167) !important;
+    color: #f6f6f6 !important;
+}
+.admin_newsPaginator_leftarrow{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.admin_newsPaginator_rightarrow{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.inactive_arrow{
+    color: #adadad;
+}
+
 .status_operation_message{
     text-align: center;
     padding: 10px;
-    margin: 0 10px;
+    margin: 0 10px 10px;
     color: #4a5568;
+    border-radius: 5px;
 }
+.green{
+    color: #046d00;
+    background-color: #ceffb8;
+    border: 1px solid green;
+}
+.red{
+    color: #6a0000;
+    background-color: #ffc0c0;
+    border: 1px solid #ffadad;
+}
+
