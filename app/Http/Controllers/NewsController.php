@@ -9,7 +9,7 @@ class NewsController extends Controller
 {
     public function index()
     {
-        $newsList = News::get();
+        $newsList = News::paginate(4);
 
         return view('news.index', [
             'newsList' => $newsList

@@ -1,24 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
-
-/* font-family: 'Roboto Condensed', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,600;0,700;1,200;1,400;1,700&display=swap');
+/* font-family: 'Montserrat', sans-serif; */
 
 html,
 body {
     color: rgb(29, 29, 29);
-    font-family: 'Roboto Condensed', sans-serif;
     background-color: rgb(240, 240, 240);
     margin: 0;
     padding: 0;
 }
-
+a{
+    font-family: 'Montserrat', sans-serif;
+}
 input {
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
-
-textarea {
-    font-family: 'Roboto Condensed', sans-serif;
+textarea{
+    font-family: 'Montserrat', sans-serif;
 }
-
 header {
     margin-bottom: 50px;
 }
@@ -103,7 +101,23 @@ footer {
     display: flex;
     align-self: center;
 }
+.header_right ul{
+    display: flex !important;
+    flex-direction: row;
+}
+.log_reg-button{
+    display: flex !important;
+    color: white;
+    border: 1px solid rgba(125, 125, 125, 0.55);
+    border-radius: 3px;
+    background-color: #f6f6f6;
+    padding: 0 5px;
+}
+.log_reg-button:not(:last-child){
+    margin-right: 10px;
+}
 
+/* categories */
 .categories_block {
     padding: 10px;
     overflow: hidden;
@@ -131,12 +145,8 @@ footer {
 .header_right a {
     display: inline-block;
     text-align: center;
-    width: 80px;
     padding: 5px;
     color: rgb(29, 29, 29);
-    background-color: rgb(230, 230, 230);
-    border-radius: 10px;
-    margin-left: 10px;
     text-decoration: none;
 }
 
@@ -165,7 +175,6 @@ footer {
     border-bottom-right-radius: 10px;
     color: rgb(252, 252, 252);
     background-color: rgb(170, 22, 59);
-    height: 20px;
     padding: 5px 10px;
     margin-right: 10px;
 }
@@ -178,7 +187,6 @@ footer {
 
 
 /* News miniature */
-
 .news_mini {
     max-width: 349px;
     overflow: hidden;
@@ -205,21 +213,20 @@ footer {
     color: rgb(53, 53, 53);
 }
 .news_minidesk{
-    height: 240px;
+    height: 200px;
 }
 .news_minidesk a {
     position: absolute;
-    left: calc(100% - 150px);
     margin: 10px 0;
     color: white;
     display: block;
-    width: 120px;
+    width: 150px;
     border-radius: 10px;
     text-align: center;
     padding: 10px;
     text-decoration: none;
     background-color: rgb(170, 22, 59);
-    bottom: 35px;
+    bottom: 43px;
     right: 10px;
 }
 
@@ -263,6 +270,7 @@ footer {
     background: linear-gradient(0deg, rgba(255, 255, 250, 1) 20%, rgba(255, 255, 255, 0) 100%);
 }
 
+
 /* One News */
 .one_news{
     padding: 5px 10px;
@@ -270,62 +278,60 @@ footer {
     background-color: white;
     box-shadow: rgba(51, 51, 51, 0.219) 0 0 6px 0;
 }
-
-/*  Authentication  .  Registration  */
-
-.auth_reg {
-    width: 210px;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    box-shadow: rgba(51, 51, 51, 0.219) 0 0 6px 0;
+/* paginator */
+.custom_Paginator{
+    margin: 0 10px 10px;
+    display: flex;
+    font-size: 20px;
 }
-
-.auth_reg p {
+.custom_Paginator a{
+    text-decoration: none;
+    display: block;
+    background-color: white;
+    color: #3e3e3e;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
     text-align: center;
 }
 
-.auth_reg input {
-    width: 200px;
-}
-
-.auth_reg button {
-    background-color: rgb(170, 22, 59);
-    color: white;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 10px;
-}
-
-.addFeedBackForm{
-    box-sizing: border-box;
-    background-color: white;
-    color: black;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 10px;
-    box-shadow: rgba(51, 51, 51, 0.219) 0 0 6px 0;
-}
-.addFeedBackForm input{
-    height: 30px;
-    width: calc(100% - 10px);
+.custom_Paginator span{
     display: block;
-    border-radius: 5px;
-    border: 1px solid #0000004f;
-    outline: blueviolet;
+    background-color: white;
+    color: #3e3e3e;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+}
+.custom_Paginator span:hover{
+    background-color: #dbdbdb;
+}
+.custom_Paginator a:hover{
+    background-color: #dbdbdb;
+}
+.custom_paginator_currentPage{
+    background-color: rgb(170, 22, 59) !important;
+    color: #f6f6f6 !important;
+}
+.custom_button_paginator{
+    overflow: hidden;
+    border: 1px solid rgba(97, 94, 94, 0.53);
+}
+.custom_button_paginator:not(:first-child){
+    border-left: none;
+}
+.custom_button_paginator:first-child{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.custom_button_paginator:last-child{
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
-.addFeedBackForm button {
-    background-color: rgb(170, 22, 59);
-    color: white;
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    margin-top: 10px;
+.inactive_arrow{
+    color: #adadad;
 }
+
+/*  Authentication  .  Registration  */

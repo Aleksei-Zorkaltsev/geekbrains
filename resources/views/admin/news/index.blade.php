@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="adminWorkspace_title">
-        <h2>admin news panel</h2>
+        <h2>Admin news panel</h2>
         <a href="{{ route('admin.news.create') }}">Add news <i class="fas fa-plus"></i></a>
     </div>
 

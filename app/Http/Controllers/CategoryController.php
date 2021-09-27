@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-        $newsList = News::where('category_id', $id)->get();
+        $newsList = News::where('category_id', $id)->paginate(4);
 
         return view('categories.show', [
             'category' => $category,

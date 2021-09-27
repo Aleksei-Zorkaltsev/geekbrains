@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\Admin\FeedbackController as AdminFeedbackController;
+use \App\Http\Controllers\Admin\UserController;
+use \App\Http\Controllers\Account\IndexController as AccountController;
+use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 
@@ -24,28 +23,32 @@ use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 
 Route::get('/', function () {
     return view('index');
-})->name('home');
+})->name('hello_page');
 
 
 //auth
+Route::group(['middleware' => 'auth'], function (){
+    Route::get('/account', AccountController::class)->name('account');
+    Route::get('/logout', function (){
+        \Auth::logout();
+        return redirect()->route('login');
+    })->name('logout');
 
-Route::get('/auth', [AuthController::class, 'index'])
-    ->name('auth');
+    //group Admin
 
+    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function(){
+        Route::resource('categories', AdminCategoryController::class)
+            ->name('index', 'categories');
+        Route::resource('news', AdminNewsController::class)
+            ->name('index', 'news');
+        Route::resource('users', UserController::class)
+            ->name('index', 'users');
 
+        Route::get('index', AdminController::class)->name('index');
+    });
 
-//group Admin
-
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
-    Route::resource('categories', AdminCategoryController::class)
-        ->name('index', 'categories');
-    Route::resource('news', AdminNewsController::class)
-        ->name('index', 'news');
-    Route::resource('feedback', AdminFeedbackController::class)
-        ->name('index', 'feedback');
-
-    Route::get('/', [AdminController::class, 'index'])->name('main');
 });
+
 
 
 // news
@@ -57,15 +60,6 @@ Route::get('/news/{id}', [NewsController::class, 'show'])
     ->name('news.show');
 
 
-
-// feedback
-
-//Route::get('/feedback', [FeedbackController::class, 'index'])
-//    ->name('feedback');
-Route::resource('feedback', FeedbackController::class)
-    ->name('index', 'feedback');
-
-
 // category
 
 Route::get('/categories', [CategoryController::class, 'index'])
@@ -74,3 +68,7 @@ Route::get('/categories', [CategoryController::class, 'index'])
 Route::get('/category/{id}', [CategoryController::class, 'show'])
     ->name('category.show');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
