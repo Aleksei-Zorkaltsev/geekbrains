@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryCreateRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -33,18 +35,17 @@ class CategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return
-     * \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryCreateRequest $request)
     {
-        $category = Category::create($request->only('title', 'description'));
+        $category = Category::create($request->validated());
 
         if($category){
-            return redirect()->route('admin.categories')->with('success', 'add category success');
+            return redirect()->route('admin.categories')->with('success', __('messages.admin.category.create.success'));
         }
 
-        return back()->with('error', 'add category fail')->withInput();
+        return back()->with('error', __('messages.admin.category.create.fail'))->withInput();
     }
 
     /**
@@ -62,8 +63,7 @@ class CategoryController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  $category
-     * @return
-     * \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
     {
@@ -77,23 +77,19 @@ class CategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return
-     * \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryUpdateRequest $request, Category $category)
     {
-        //$category->title = $request->input('title')
-        $category->fill(
-            $request->only('title', 'description')
-        )->save();
+        $category->fill($request->validated())->save();
 
         if($category){
             return redirect()
                 ->route('admin.categories')
-                ->with('success', 'update category success');
+                ->with('success', __('messages.admin.category.update.success')); //trans = __
         }
         return back()
-            ->with('error', 'update category fail')
+            ->with('error', __('messages.admin.category.update.fail'))
             ->withInput();
     }
 
@@ -101,8 +97,7 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return
-     * \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)
     {
