@@ -1,20 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\UserUpdateRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class FeedbackController extends Controller
+class UserController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('feedback.index');
+        $users = User::all();
+        return view('admin.users.index', ['users' => $users]);
     }
 
     /**
@@ -24,7 +27,7 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        return view('feedback.create');
+        //
     }
 
     /**
@@ -35,10 +38,7 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        $content = $request->all();
-        $response = response($content);
-
-        return view('feedback.create', ['response' => $response->original]);
+        //
     }
 
     /**
@@ -58,9 +58,9 @@ class FeedbackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('admin.users.edit', ['user' => $user]);
     }
 
     /**
@@ -70,9 +70,15 @@ class FeedbackController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, User $user)
     {
-        //
+        //dd($request);
+        $user = $user->fill($request->validated())->save();
+
+        if($user){
+            return redirect()->route('admin.users')->with('success', 'data update');
+        }
+        return redirect()->route('admin.users')->with('error', 'data not update');
     }
 
     /**
@@ -85,7 +91,4 @@ class FeedbackController extends Controller
     {
         //
     }
-
-
-
 }

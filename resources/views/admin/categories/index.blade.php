@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
         <div class="adminWorkspace_title">
-            <h2>admin category panel</h2>
+            <h2>Admin category panel</h2>
             <a href="{{ route('admin.categories.create') }}">Add category <i class="fas fa-plus"></i></a>
         </div>
 
@@ -23,4 +23,5 @@
                 </tr>
             @endforeach
         </table>
+        {!! $categories->links() !!}
 @endsection
