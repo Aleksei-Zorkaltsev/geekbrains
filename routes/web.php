@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryController;
 use \App\Http\Controllers\Admin\UserController;
+use \App\Http\Controllers\Admin\ParserController as ParserController;
 use \App\Http\Controllers\Account\IndexController as AccountController;
 use App\Http\Controllers\Admin\IndexController as AdminController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\SocialController as SocialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,12 +32,11 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/account', AccountController::class)->name('account');
     Route::get('/logout', function (){
-        \Auth::logout();
-        return redirect()->route('login');
-    })->name('logout');
+            \Auth::logout();
+            return redirect()->route('login');
+        })->name('logout');
 
     //group Admin
-
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function(){
         Route::resource('categories', AdminCategoryController::class)
             ->name('index', 'categories');
@@ -45,8 +46,9 @@ Route::group(['middleware' => 'auth'], function (){
             ->name('index', 'users');
 
         Route::get('index', AdminController::class)->name('index');
-    });
 
+        Route::get('parser', ParserController::class)->name('parser');
+    });
 });
 
 
@@ -59,7 +61,6 @@ Route::get('/news/{id}', [NewsController::class, 'show'])
     ->where('id', '\d+')
     ->name('news.show');
 
-
 // category
 
 Route::get('/categories', [CategoryController::class, 'index'])
@@ -68,7 +69,13 @@ Route::get('/categories', [CategoryController::class, 'index'])
 Route::get('/category/{id}', [CategoryController::class, 'show'])
     ->name('category.show');
 
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'guest'], function(){
+    Route::get('start/{social}', [SocialController::class, 'start'])
+        ->name('social.start');
+    Route::get('callback/{social}', [SocialController::class, 'callback'])
+        ->name('social.callback');
+});
