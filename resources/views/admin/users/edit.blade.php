@@ -34,12 +34,17 @@
             <div>
                 <p>Информация:</p>
                 <p>id пользователя: {{ $user->id }}<br>
-                Статус верификации:
+                    Статус верификации:
                     @if(is_null($user->verifed_at)) Не верифицирован
                     @else {{ $user->verifed_at }}
                     @endif<br>
-                Дата создания пользователя: {{ $user->created_at }}<br>
-                Дата последнего обновления: {{ $user->updated_at }}</p>
+                    Дата создания пользователя: {{ $user->created_at }}<br>
+                    Дата последнего обновления: {{ $user->updated_at }}<br>
+                    Последняя дата авторизации:
+                        @if(is_null($user->last_login_at)) Ранее не авторизовывался
+                        @else {{ $user->last_login_at}}
+                    @endif
+                </p>
             </div>
             <hr>
             <button type="submit">edit</button>

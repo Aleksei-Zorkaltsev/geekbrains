@@ -72,7 +72,8 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, User $user)
     {
-        //dd($request);
+
+        $user->updated_at = now('Europe/Moscow');
         $user = $user->fill($request->validated())->save();
 
         if($user){

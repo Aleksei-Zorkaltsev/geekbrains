@@ -47,6 +47,7 @@
                                     </label>
                                 </div>
                             </div>
+                            <br>
                         </div>
                         <br>
                         <div class="form-group row mb-0">
@@ -62,6 +63,10 @@
                                 @endif
                             </div>
                         </div>
+                        <br>
+                        <a href="{{ route('social.start' , ['social' => 'vkontakte']) }}"><i class="fab fa-vk"></i> Авторизация через VKontakte </a>
+                        <br>
+                        <a href="{{ route('social.start' , ['social' => 'facebook']) }}"><i class="fab fa-facebook-square"></i> Авторизация через Facebook </a>
                     </form>
                 </div>
             </div>

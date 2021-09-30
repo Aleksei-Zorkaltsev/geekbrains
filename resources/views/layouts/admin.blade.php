@@ -57,6 +57,7 @@
                 <li @if(request()->routeIs('admin.news*')) class="active" @endif><a href="{{ route('admin.news') }}">News</a></li>
                 <li @if(request()->routeIs('admin.categories*')) class="active" @endif><a href="{{ route('admin.categories') }}">Categories</a></li>
                 <li @if(request()->routeIs('admin.users*')) class="active" @endif><a href="{{ route('admin.users') }}">Users</a></li>
+                <li @if(request()->routeIs('admin.parser*')) class="active" @endif><a href="{{ route('admin.parser') }}">Parser</a></li>
             </ul>
         </div>
 
